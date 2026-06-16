@@ -14,14 +14,6 @@
     --green: #1D9E75;
     --green-light: #E1F5EE;
     --green-dark: #0F6E56;
-    --blue: #185FA5;
-    --blue-light: #E6F1FB;
-    --orange: #D85A30;
-    --orange-light: #FAECE7;
-    --purple: #534AB7;
-    --purple-light: #EEEDFE;
-    --pink: #993556;
-    --pink-light: #FBEAF0;
     --text: #1a1a1a;
     --text-muted: #6b6b6b;
     --text-hint: #aaa;
@@ -39,10 +31,9 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    padding-bottom: calc(80px + var(--safe-bottom));
+    padding-bottom: calc(90px + var(--safe-bottom));
   }
 
-  /* HEADER */
   .header {
     background: var(--green);
     color: white;
@@ -52,7 +43,6 @@
   .header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
   .header p { font-size: 13px; opacity: 0.8; margin-top: 2px; }
 
-  /* NAV */
   .nav {
     position: fixed;
     bottom: 0; left: 0; right: 0;
@@ -70,11 +60,9 @@
   .nav-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .nav-btn.active { color: var(--green); }
 
-  /* SCREENS */
   .screen { display: none; padding: 1rem 1rem 0; }
   .screen.active { display: block; }
 
-  /* CARDS */
   .card {
     background: var(--surface);
     border-radius: var(--radius);
@@ -83,7 +71,6 @@
     margin-bottom: 10px;
   }
 
-  /* ADD FORM */
   .form-label { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; display: block; font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
   .form-input {
     width: 100%; padding: 11px 14px;
@@ -95,7 +82,16 @@
   }
   .form-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
 
-  /* STARS */
+  /* TOGGLE GOLEIRO */
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding: 10px 14px; background: var(--bg); border-radius: var(--radius-sm); border: 0.5px solid var(--border); }
+  .toggle-label { font-size: 14px; color: var(--text); display: flex; align-items: center; gap: 6px; }
+  .toggle { position: relative; width: 44px; height: 26px; }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider { position: absolute; inset: 0; background: var(--border-strong); border-radius: 99px; cursor: pointer; transition: 0.2s; }
+  .toggle-slider:before { content: ''; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+  .toggle input:checked + .toggle-slider { background: var(--green); }
+  .toggle input:checked + .toggle-slider:before { transform: translateX(18px); }
+
   .stars { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; }
   .star-btn {
     width: 28px; height: 28px; border-radius: 50%;
@@ -108,7 +104,6 @@
   }
   .star-btn.selected { background: var(--green); color: white; border-color: var(--green); }
 
-  /* BUTTONS */
   .btn {
     width: 100%; padding: 13px;
     border-radius: var(--radius-sm);
@@ -120,8 +115,8 @@
   .btn-green { background: var(--green); color: white; }
   .btn-outline { background: transparent; border: 1.5px solid var(--green); color: var(--green); }
   .btn-gray { background: var(--bg); color: var(--text); border: 0.5px solid var(--border-strong); }
+  .btn-red { background: transparent; border: 1.5px solid #E24B4A; color: #E24B4A; }
 
-  /* PLAYER ITEM */
   .player-row {
     display: flex; align-items: center;
     justify-content: space-between;
@@ -129,7 +124,7 @@
     border-bottom: 0.5px solid var(--border);
   }
   .player-row:last-child { border-bottom: none; }
-  .player-info .name { font-size: 15px; font-weight: 500; }
+  .player-info .name { font-size: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px; }
   .player-info .note { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
   .note-badge {
     width: 36px; height: 36px; border-radius: 50%;
@@ -138,24 +133,27 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
+  .gk-badge-list {
+    background: #FFF3CD; color: #856404;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 6px; border-radius: 99px;
+    border: 0.5px solid #FFECB5;
+  }
   .del-btn {
     background: none; border: none; color: var(--text-hint);
     cursor: pointer; padding: 6px; margin-left: 6px; font-size: 18px;
   }
 
-  /* SECTION TITLE */
   .section-title {
     font-size: 12px; font-weight: 600; color: var(--text-muted);
     text-transform: uppercase; letter-spacing: 0.5px;
     margin: 1.25rem 0 8px;
   }
 
-  /* EMPTY */
   .empty { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
   .empty-icon { font-size: 48px; margin-bottom: 12px; }
   .empty p { font-size: 14px; }
 
-  /* SORT CONFIG */
   .config-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
   .config-row label { font-size: 14px; color: var(--text); flex: 1; }
   .size-input {
@@ -174,13 +172,24 @@
   .team-avg { font-size: 12px; padding: 3px 10px; border-radius: 99px; font-weight: 600; }
   .team-player { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-top: 1px solid rgba(0,0,0,0.06); font-size: 14px; }
   .team-player-note { font-size: 12px; font-weight: 600; opacity: 0.7; }
+  .gk-tag { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 99px; background: rgba(0,0,0,0.12); margin-left: 5px; }
 
   /* BALANCE BAR */
   .balance { background: var(--surface); border-radius: var(--radius); border: 0.5px solid var(--border); padding: 14px 16px; margin-bottom: 10px; }
   .balance-label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
   .balance-bars { display: flex; gap: 6px; align-items: flex-end; height: 40px; }
-  .balance-bar { flex: 1; border-radius: 4px 4px 0 0; min-height: 8px; transition: height 0.3s; }
+  .balance-bar { flex: 1; border-radius: 4px 4px 0 0; min-height: 8px; }
   .balance-val { font-size: 11px; text-align: center; margin-top: 4px; font-weight: 600; color: var(--text-muted); }
+
+  /* HISTÓRICO */
+  .hist-header { display: flex; align-items: center; justify-content: space-between; margin: 1.25rem 0 8px; }
+  .hist-header .section-title { margin: 0; }
+  .hist-clear { font-size: 12px; color: #E24B4A; background: none; border: none; cursor: pointer; font-weight: 600; }
+  .hist-item { background: var(--surface); border-radius: var(--radius); border: 0.5px solid var(--border); padding: 12px 16px; margin-bottom: 8px; }
+  .hist-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .hist-date { font-size: 11px; color: var(--text-hint); }
+  .hist-teams { display: flex; gap: 6px; flex-wrap: wrap; }
+  .hist-team-pill { font-size: 11px; padding: 3px 8px; border-radius: 99px; font-weight: 600; }
 
   /* TOAST */
   .toast {
@@ -194,8 +203,9 @@
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* COUNTER BADGE */
   .counter { background: var(--green); color: white; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 99px; margin-left: 4px; }
+  .btn-row { display: flex; gap: 8px; margin-bottom: 10px; }
+  .btn-row .btn { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -211,8 +221,20 @@
   <div class="card">
     <label class="form-label">Nome</label>
     <input class="form-input" id="input-name" type="text" placeholder="Ex: Marcos" autocomplete="off" />
-    <label class="form-label">Nota geral (1–10)</label>
-    <div class="stars" id="stars-container"></div>
+
+    <div class="toggle-row">
+      <span class="toggle-label">🧤 É goleiro?</span>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-gk" />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div id="note-section">
+      <label class="form-label">Nota geral (1–10)</label>
+      <div class="stars" id="stars-container"></div>
+    </div>
+
     <button class="btn btn-green" onclick="addPlayer()">+ Adicionar</button>
   </div>
 
@@ -230,15 +252,20 @@
   <div class="section-title">Configurar sorteio</div>
   <div class="card">
     <div class="config-row">
-      <label>Jogadores por time</label>
+      <label>Jogadores por time (incluindo goleiro)</label>
       <input class="size-input" id="input-size" type="number" value="5" min="2" max="11" />
     </div>
     <button class="btn btn-green" onclick="doSort()">🔀 Sortear agora</button>
   </div>
   <div id="sort-result"></div>
+
+  <div class="hist-header" id="hist-header" style="display:none">
+    <div class="section-title">Últimos sorteios</div>
+    <button class="hist-clear" onclick="clearHistory()">Limpar histórico</button>
+  </div>
+  <div id="hist-list"></div>
 </div>
 
-<!-- NAV -->
 <nav class="nav">
   <button class="nav-btn active" id="nav-players" onclick="goTo('players')">
     <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -262,11 +289,12 @@ const TEAM_COLORS = [
 ];
 
 let players = JSON.parse(localStorage.getItem('racha_players') || '[]');
+let history = JSON.parse(localStorage.getItem('racha_history') || '[]');
 let selectedNote = 0;
+let isGk = false;
 
-function save() {
-  localStorage.setItem('racha_players', JSON.stringify(players));
-}
+function save() { localStorage.setItem('racha_players', JSON.stringify(players)); }
+function saveHistory() { localStorage.setItem('racha_history', JSON.stringify(history)); }
 
 function toast(msg) {
   const t = document.getElementById('toast');
@@ -280,8 +308,15 @@ function goTo(screen) {
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('screen-' + screen).classList.add('active');
   document.getElementById('nav-' + screen).classList.add('active');
-  if (screen === 'sort') renderSort();
+  if (screen === 'sort') renderHistory();
 }
+
+// Toggle goleiro esconde nota
+document.getElementById('toggle-gk').addEventListener('change', function() {
+  isGk = this.checked;
+  document.getElementById('note-section').style.display = isGk ? 'none' : 'block';
+  if (isGk) selectedNote = 0;
+});
 
 function buildStars() {
   const c = document.getElementById('stars-container');
@@ -290,10 +325,7 @@ function buildStars() {
     const b = document.createElement('button');
     b.className = 'star-btn' + (i === selectedNote ? ' selected' : '');
     b.textContent = i;
-    b.onclick = () => {
-      selectedNote = i;
-      buildStars();
-    };
+    b.onclick = () => { selectedNote = i; buildStars(); };
     c.appendChild(b);
   }
 }
@@ -301,24 +333,35 @@ function buildStars() {
 function renderPlayers() {
   const list = document.getElementById('player-list');
   document.getElementById('player-count').textContent = players.length;
+  const gkCount = players.filter(p => p.gk).length;
   document.getElementById('header-sub').textContent =
     players.length === 0 ? 'Adicione jogadores para começar' :
-    players.length + ' jogador' + (players.length !== 1 ? 'es' : '') + ' cadastrado' + (players.length !== 1 ? 's' : '');
+    players.length + ' jogador' + (players.length !== 1 ? 'es' : '') +
+    (gkCount > 0 ? ' · ' + gkCount + ' goleiro' + (gkCount !== 1 ? 's' : '') : '');
 
   if (!players.length) {
     list.innerHTML = '<div class="empty"><div class="empty-icon">👤</div><p>Nenhum jogador ainda.<br>Adicione acima!</p></div>';
     return;
   }
+
+  const sorted = [...players].sort((a,b) => {
+    if (a.gk !== b.gk) return a.gk ? -1 : 1;
+    return b.note - a.note;
+  });
+
   list.innerHTML = '<div class="card">' +
-    [...players].sort((a,b) => b.note - a.note).map((p, i) => {
+    sorted.map(p => {
       const origIdx = players.indexOf(p);
       return `<div class="player-row">
         <div class="player-info">
-          <div class="name">${p.name}</div>
-          <div class="note">Nota ${p.note}/10</div>
+          <div class="name">
+            ${p.gk ? '🧤 ' : ''}${p.name}
+            ${p.gk ? '<span class="gk-badge-list">GOL</span>' : ''}
+          </div>
+          <div class="note">${p.gk ? 'Goleiro' : 'Nota ' + p.note + '/10'}</div>
         </div>
         <div style="display:flex;align-items:center;gap:6px">
-          <div class="note-badge">${p.note}</div>
+          ${p.gk ? '<div class="note-badge">🧤</div>' : '<div class="note-badge">' + p.note + '</div>'}
           <button class="del-btn" onclick="removePlayer(${origIdx})" aria-label="Remover ${p.name}">✕</button>
         </div>
       </div>`;
@@ -328,14 +371,17 @@ function renderPlayers() {
 function addPlayer() {
   const name = document.getElementById('input-name').value.trim();
   if (!name) { toast('Digite o nome do jogador'); return; }
-  if (!selectedNote) { toast('Selecione uma nota'); return; }
-  players.push({ name, note: selectedNote });
+  if (!isGk && !selectedNote) { toast('Selecione uma nota'); return; }
+  players.push({ name, note: isGk ? 0 : selectedNote, gk: isGk });
   save();
   document.getElementById('input-name').value = '';
+  document.getElementById('toggle-gk').checked = false;
+  isGk = false;
   selectedNote = 0;
+  document.getElementById('note-section').style.display = 'block';
   buildStars();
   renderPlayers();
-  toast(name + ' adicionado!');
+  toast(name + (isGk ? ' (goleiro)' : '') + ' adicionado!');
 }
 
 function removePlayer(i) {
@@ -346,30 +392,63 @@ function removePlayer(i) {
   toast(name + ' removido');
 }
 
-function renderSort() {
-  document.getElementById('sort-result').innerHTML = '';
-}
-
 function doSort() {
   const size = parseInt(document.getElementById('input-size').value) || 5;
   if (players.length < 4) { toast('Adicione pelo menos 4 jogadores'); return; }
 
-  const pool = [...players].sort(() => Math.random() - 0.5);
-  const teams = [];
-  for (let i = 0; i < pool.length; i += size) {
-    teams.push(pool.slice(i, i + size));
+  const goalkeepers = players.filter(p => p.gk).sort(() => Math.random() - 0.5);
+  const field = players.filter(p => !p.gk).sort(() => Math.random() - 0.5);
+
+  // Se há goleiros, cada time precisa de (size - 1) jogadores de linha + 1 goleiro
+  // Se não há goleiros, divide só pelos jogadores de linha
+  const hasGk = goalkeepers.length > 0;
+  const fieldPerTeam = hasGk ? size - 1 : size;
+  const numTeams = hasGk
+    ? Math.min(Math.floor(field.length / fieldPerTeam), goalkeepers.length)
+    : Math.floor(field.length / size);
+
+  if (numTeams < 2) {
+    if (hasGk) {
+      toast('Com ' + size + ' por time, precisa de ' + (fieldPerTeam * 2) + '+ jogadores de linha e 2+ goleiros');
+    } else {
+      toast('Jogadores insuficientes para ' + size + ' por time');
+    }
+    return;
   }
 
-  const avgs = teams.map(t => t.reduce((s,p) => s+p.note, 0) / t.length);
-  const maxAvg = Math.max(...avgs);
+  // Monta times: 1 goleiro por time + jogadores de linha
+  const teams = Array.from({length: numTeams}, () => []);
+
+  // Distribui goleiros (1 por time)
+  goalkeepers.forEach((gk, i) => { if (i < numTeams) teams[i].push(gk); });
+
+  // Preenche com jogadores de linha (fieldPerTeam por time)
+  let fi = 0;
+  teams.forEach(team => {
+    let added = 0;
+    while (added < fieldPerTeam && fi < field.length) {
+      team.push(field[fi++]);
+      added++;
+    }
+  });
+
+  // Remove times vazios ou com 1 pessoa só
+  const validTeams = teams.filter(t => t.length >= 2);
+
+  const avgs = validTeams.map(t => {
+    const fieldPlayers = t.filter(p => !p.gk);
+    if (!fieldPlayers.length) return 0;
+    return fieldPlayers.reduce((s,p) => s+p.note, 0) / fieldPlayers.length;
+  });
+  const maxAvg = Math.max(...avgs) || 1;
 
   let html = '';
 
-  // Balance bar
+  // Barra de equilíbrio
   html += `<div class="balance">
-    <div class="balance-label">Equilíbrio dos times</div>
+    <div class="balance-label">Equilíbrio dos times (média dos jogadores de linha)</div>
     <div class="balance-bars">
-      ${teams.map((t,i) => {
+      ${validTeams.map((t,i) => {
         const avg = avgs[i];
         const pct = Math.round((avg / maxAvg) * 100);
         return `<div style="flex:1">
@@ -380,7 +459,7 @@ function doSort() {
     </div>
   </div>`;
 
-  teams.forEach((team, ti) => {
+  validTeams.forEach((team, ti) => {
     const c = TEAM_COLORS[ti % TEAM_COLORS.length];
     const avg = avgs[ti].toFixed(1);
     html += `<div class="team-card" style="background:${c.bg}">
@@ -389,18 +468,58 @@ function doSort() {
         <div class="team-avg" style="background:${c.bar};color:white">Média ${avg}</div>
       </div>
       ${team.map(p => `<div class="team-player" style="color:${c.text}">
-        <span>${p.name}</span>
-        <span class="team-player-note">${p.note}/10</span>
+        <span>${p.gk ? '🧤 ' : ''}${p.name}${p.gk ? '<span class="gk-tag">GOL</span>' : ''}</span>
+        <span class="team-player-note">${p.gk ? 'Goleiro' : p.note + '/10'}</span>
       </div>`).join('')}
     </div>`;
   });
 
-  html += `<button class="btn btn-outline" onclick="doSort()" style="margin-bottom:10px">🔀 Sortear de novo</button>`;
+  html += `<div class="btn-row">
+    <button class="btn btn-outline" onclick="doSort()">🔀 Sortear de novo</button>
+  </div>`;
+
   document.getElementById('sort-result').innerHTML = html;
+
+  // Salva no histórico
+  const now = new Date();
+  const label = now.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit'}) + ' ' + now.toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+  history.unshift({ date: label, teams: validTeams.map((t,i) => ({ name: TEAM_COLORS[i%TEAM_COLORS.length].name, bar: TEAM_COLORS[i%TEAM_COLORS.length].bar, bg: TEAM_COLORS[i%TEAM_COLORS.length].bg, text: TEAM_COLORS[i%TEAM_COLORS.length].text, players: t })) });
+  if (history.length > 3) history = history.slice(0, 3);
+  saveHistory();
+  renderHistory();
+}
+
+function renderHistory() {
+  const header = document.getElementById('hist-header');
+  const list = document.getElementById('hist-list');
+  if (!history.length) { header.style.display = 'none'; list.innerHTML = ''; return; }
+  header.style.display = 'flex';
+  list.innerHTML = history.map((h, hi) => `
+    <div class="hist-item">
+      <div class="hist-item-header">
+        <span style="font-size:13px;font-weight:600;color:var(--text)">Sorteio ${history.length - hi}</span>
+        <span class="hist-date">${h.date}</span>
+      </div>
+      ${h.teams.map(t => `
+        <div style="margin-bottom:8px">
+          <div style="font-size:12px;font-weight:700;color:${t.text};margin-bottom:4px">${t.name}</div>
+          <div style="font-size:13px;color:var(--text-muted)">
+            ${t.players.map(p => (p.gk ? '🧤 ' : '') + p.name).join(' · ')}
+          </div>
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function clearHistory() {
+  history = [];
+  saveHistory();
+  renderHistory();
+  toast('Histórico apagado');
 }
 
 buildStars();
 renderPlayers();
+renderHistory();
 </script>
 </body>
 </html>
